@@ -20,20 +20,7 @@ const codeRequestURI = {
   google: `https://accounts.google.com/o/oauth2/auth?client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_LOGIN_REDIRECT_URL}&response_type=code&scope=profile`
 };
 
-const oauthStyle = {
-  github: css`
-    background-color: ${theme.color.gray_8};
-
-    & > * {
-      color: ${theme.color.white};
-    }
-  `,
-  google: css`
-    background-color: ${theme.color.white};
-  `
-};
-
-const OAuth = ({ type }: Props) => (
+const OAuth = ({ type }) => (
   <OAuthLink
     href={codeRequestURI[type]}
     type={type}

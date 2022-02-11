@@ -4,6 +4,7 @@ import imgA from "img/96365422.png";
 import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { authService, firebaseInstance } from "fBase";
 import AuthForm from "components/AuthForm";
+import axios from "axios";
 
 // 이메일 등록, 구글아이디 등록, 깃헙 아이디 등록
 const Auth = () => {
@@ -17,7 +18,9 @@ const Auth = () => {
     // using a popup으로 설정.(공식문서 따라서) 구글,깃헙 로그인 팝업창 띄워줌/
     let provider;
     if (name === "google") {
-      provider = new firebaseInstance.auth.GoogleAuthProvider();
+      provider = await axios.get(
+        "http://localhost:8080/oauth2/authorization/google"
+      );
     } else if (name === "github") {
       provider = new firebaseInstance.auth.GithubAuthProvider();
     }
